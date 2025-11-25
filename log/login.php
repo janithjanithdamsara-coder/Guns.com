@@ -1,244 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login — School System</title>
-    
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#6366f1', // Indigo 500
+                        primaryHover: '#4f46e5', // Indigo 600
+                        darkCard: '#0f172a', // Slate 900
+                        darkInput: '#1e293b', // Slate 800
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        /* =============== RESET & BASE =============== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background: url('classroom-blur.jpg') center/cover no-repeat fixed;
-            background-color: #f5f7fa;
-            min-height: 100vh; /* Fallback */
-            min-height: 100dvh; /* Modern mobile fix */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 15px;
+            /* Background Image */
+            background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
-        /* =============== LOGIN BOX =============== */
-        .login-container {
-            width: 100%;
-            max-width: 420px;
-            margin: auto;
-        }
-
-        .login-box {
-            background: rgba(255, 255, 255, 0.96);
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-            backdrop-filter: blur(8px);
-            width: 100%;
-        }
-
-        .login-box h2 {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: #2c3e50;
-            font-size: 1.75rem;
-            font-weight: 700;
-        }
-
-        /* =============== FORM STYLING WITH ICONS =============== */
-        .input-group {
-            margin-bottom: 1.2rem;
-        }
-
-        .input-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #34495e;
-            font-size: 0.9rem;
-        }
-
-        /* Wrapper to hold input and icon together */
-        .input-wrapper {
-            position: relative;
-            width: 100%;
-        }
-
-        /* Icon Styling */
-        .input-wrapper i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #7f8c8d;
-            font-size: 1.1rem;
-            pointer-events: none; /* Allows clicking through the icon */
-            transition: color 0.3s ease;
-        }
-
-        .input-group input,
-        .input-group select {
-            width: 100%;
-            padding: 0.85rem;
-            padding-left: 45px; /* Extra padding for the icon */
-            border: 1px solid #dfe6e9;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: #f9f9f9;
-            color: #2d3436;
-        }
-
-        /* Focus Effects */
-        .input-group input:focus,
-        .input-group select:focus {
-            outline: none;
-            border-color: #3498db;
-            background: #fff;
-            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.15);
-        }
-
-        /* Change icon color when input is focused */
-        .input-group input:focus + i,
-        .input-group select:focus + i,
-        .input-wrapper:focus-within i {
-            color: #3498db;
-        }
-
-        /* =============== reCAPTCHA RESPONSIVE FIX =============== */
-        .g-recaptcha {
-            display: flex;
-            justify-content: center;
-            margin: 1rem 0 1.5rem;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        /* =============== BUTTON =============== */
-        .login-box button {
-            width: 100%;
-            padding: 0.9rem;
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.3s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px; /* Space between text and icon */
-        }
-
-        .login-box button:hover {
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-            transform: translateY(-1px);
-        }
-
-        .login-box button:active {
-            transform: scale(0.98);
-        }
-
-        /* =============== ERROR MESSAGE =============== */
-        .error {
-            color: #c0392b;
-            text-align: center;
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            padding: 0.8rem;
-            background: #fadbd8;
-            border-radius: 6px;
-            border: 1px solid #f1948a;
-        }
-
-        /* =============== RESPONSIVE DESIGN =============== */
-        @media (max-width: 768px) {
-            .login-box { padding: 2rem; }
-        }
-
-        @media (max-width: 480px) {
-            body { align-items: flex-start; padding: 20px 15px; }
-            .login-container { margin-top: 20px; margin-bottom: 20px; }
-            .login-box { padding: 1.5rem; }
-            .login-box h2 { font-size: 1.5rem; }
-            
-            .g-recaptcha {
-                transform: scale(0.85);
-                transform-origin: center;
-                margin-bottom: 1rem;
-            }
-        }
-
-        @media (max-width: 350px) {
-            .login-box { padding: 1.2rem; }
-            .g-recaptcha {
-                transform: scale(0.75);
-                margin: 0.5rem -15px 1rem;
-            }
-            .login-box h2 { font-size: 1.3rem; }
+        .bg-overlay {
+            background: rgba(2, 6, 23, 0.85);
+            /* Dark Slate Overlay */
         }
     </style>
 </head>
-<body>
-    <div class="login-container">
-        <div class="login-box">
-            <h2>School Management System</h2>
-            <form method="POST" action="login_process.php">
-                
-                <div class="input-group">
-                    <label for="username">Username / User ID</label>
-                    <div class="input-wrapper">
-                        <i class="fas fa-user"></i>
-                        <input type="text" id="username" name="username" required autocomplete="username" placeholder="Enter your ID" />
+
+<body class="h-screen w-full font-sans antialiased relative text-gray-200">
+
+    <div class="absolute inset-0 bg-overlay z-0"></div>
+
+    <div class="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+
+        <div
+            class="max-w-md w-full space-y-8 bg-slate-900/90 backdrop-blur-md p-8 rounded-2xl shadow-2xl border border-slate-700/50 transform transition-all hover:scale-[1.01]">
+
+            <div class="text-center">
+                <div
+                    class="mx-auto h-12 w-12 bg-primary/20 rounded-full flex items-center justify-center mb-4 border border-primary/30">
+                    <i class="fas fa-school text-indigo-400 text-xl"></i>
+                </div>
+                <h2 class="text-3xl font-extrabold text-white tracking-tight">
+                    Welcome Back
+                </h2>
+                <p class="mt-2 text-sm text-gray-400">
+                    Sign in to your account
+                </p>
+            </div>
+
+            <form class="mt-8 space-y-6" method="POST" action="login_process.php">
+
+                <div class="rounded-md space-y-5">
+
+                    <div class="relative">
+                        <label for="username" class="block text-sm font-medium text-gray-300 mb-1">Username / User
+                            ID</label>
+                        <div class="relative rounded-md shadow-sm">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-user text-gray-500 text-sm"></i>
+                            </div>
+                            <input type="text" name="username" id="username" required autocomplete="username"
+                                class="block w-full pl-10 pr-3 py-3 bg-darkInput border border-slate-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent sm:text-sm transition duration-200 ease-in-out"
+                                placeholder="Enter your ID">
+                        </div>
                     </div>
-                </div>
 
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <div class="input-wrapper">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" id="password" name="password" required autocomplete="current-password" placeholder="Enter password" />
+                    <div class="relative">
+                        <div class="flex justify-between items-center mb-1">
+                            <label for="password" class="block text-sm font-medium text-gray-300">Password</label>
+                            <a href="forgot_password.php"
+                                class="text-xs font-medium text-indigo-400 hover:text-indigo-300 hover:underline">
+                                Forgot Password?
+                            </a>
+                        </div>
+
+                        <div class="relative rounded-md shadow-sm">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-gray-500 text-sm"></i>
+                            </div>
+
+                            <input type="password" name="password" id="password" required
+                                autocomplete="current-password"
+                                class="block w-full pl-10 pr-10 py-3 bg-darkInput border border-slate-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent sm:text-sm transition duration-200 ease-in-out"
+                                placeholder="Enter your password">
+
+                            <div class="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer z-20"
+                                onclick="togglePasswordVisibility()">
+                                <i class="fas fa-eye text-gray-500 hover:text-indigo-400 transition-colors"
+                                    id="toggleIcon"></i>
+                            </div>
+                        </div>
+
+                        <p class="mt-1 text-xs text-gray-500">
+                            
+                        </p>
                     </div>
+
                 </div>
 
-                <div class="input-group">
-                    <label for="role">Role</label>
-                    <div class="input-wrapper">
-                        <i class="fas fa-user-tag"></i>
-                        <select id="role" name="role" required>
-                            <option value="">Select Role</option>
-                            <option value="admin">Admin</option>
-                            <option value="student">Student</option>
-                        </select>
-                    </div>
+                <div class="flex justify-center transform scale-90 sm:scale-100 origin-center">
+                    <div class="g-recaptcha" data-theme="dark" data-sitekey="YOUR_RECAPTCHA_SITE_KEY_HERE"></div>
                 </div>
 
-                <div class="g-recaptcha-wrapper">
-                    <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY_HERE"></div>
+                <div>
+                    <button type="submit"
+                        class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-lg text-white bg-primary hover:bg-primaryHover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-primary shadow-lg shadow-indigo-500/30 transition-all duration-300 ease-in-out transform hover:-translate-y-1">
+                        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                            <i
+                                class="fas fa-right-to-bracket text-indigo-200 group-hover:text-white transition ease-in-out duration-150"></i>
+                        </span>
+                        Sign In
+                    </button>
                 </div>
 
-                <button type="submit">
-                    Login <i class="fas fa-right-to-bracket"></i>
-                </button>
+                <div class="text-center mt-4">
+                    <p class="text-sm text-gray-400">
+                        Don't have an account?
+                      <a href="../log/registration.php"
+                            class="font-bold text-indigo-400 hover:text-indigo-300 transition-colors duration-200 hover:underline">
+                            Register here
+                        </a>
+                    </p>
+                </div>
 
                 <?php if (!empty($_GET['error'])): ?>
-                    <div class="error">
-                        <i class="fas fa-exclamation-circle"></i> 
-                        <?php echo htmlspecialchars($_GET['error']); ?>
+                    <div class="mt-4 bg-red-900/30 border-l-4 border-red-500 p-4 rounded-md animate-pulse">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-exclamation-circle text-red-400"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-red-200 font-medium">
+                                    <?php echo htmlspecialchars($_GET['error']); ?>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 <?php endif; ?>
+
             </form>
         </div>
+
+        <div class="absolute bottom-4 text-center w-full text-slate-500 text-xs z-10">
+            &copy; <?php echo date("Y"); ?> School Management System. All rights reserved.
+        </div>
     </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggleIcon');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+    </script>
+
 </body>
+
 </html>
