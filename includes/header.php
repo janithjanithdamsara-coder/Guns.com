@@ -64,23 +64,24 @@
                         </li>
 
 
-                        <li>
+                        <li><a href="../log/login.php">
 
-                            <button
-                                class="relative px-4 py-1 bg-black text-white font-semibold rounded-lg border-2 border-purple-500 hover:border-purple-400 transition-all duration-300 hover:shadow-[0_0_20px_10px_rgba(168,85,247,0.6)] active:scale-95 active:shadow-[0_0_10px_5px_rgba(168,85,247,0.4)] group">
-                                <span class="flex items-center space-x-2">
-                                    <a href="../log/login.php"></a>
-                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor"
+                                <button
+                                    class="relative px-4 py-1 bg-black text-white font-semibold rounded-lg border-2 border-purple-500 hover:border-purple-400 transition-all duration-300 hover:shadow-[0_0_20px_10px_rgba(168,85,247,0.6)] active:scale-95 active:shadow-[0_0_10px_5px_rgba(168,85,247,0.4)] group">
+                                    <span class="flex items-center space-x-2">
+                                        <span>Sing in</span>
+                                        <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor"
                                         fill="none"
                                         class="w-6 h-6 text-purple-500 group-hover:text-white transition-colors duration-300">
                                         <path d="M5 13l4 4L19 7" stroke-width="2" stroke-linejoin="round"
                                             stroke-linecap="round"></path>
                                     </svg> -->
-                                    <span>Sing in</span>
-                                </span>
-                                <span
-                                    class="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-purple-500/20 to-indigo-500/20"></span>
-                            </button>
+
+                                    </span>
+                                    <span
+                                        class="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-purple-500/20 to-indigo-500/20"></span>
+                                </button>
+                            </a>
 
                             <!-- <button
                                 class="bg-blue-500 text-white px-3 py-1 rounded-sm hover:bg-blue-600  md:border-0 md:p-3">
