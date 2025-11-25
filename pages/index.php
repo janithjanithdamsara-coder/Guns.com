@@ -4,9 +4,7 @@ include("../includes/header.php");
 </div>
 <main>
     <div class="my-10 text-center">
-        <h1 class="text-3xl font-bold m-auto">
-            Welcome to AL Class Management System.
-        </h1>
+
 
     </div>
     <div>
@@ -55,7 +53,8 @@ include("../includes/header.php");
         </div>
 
 
-        <div class="w-full rounded-md bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-6 space-y-3 relative overflow-hidden">
+        <div
+            class="w-full rounded-md bg-white shadow-[0px_0px_15px_rgba(0,0,0,0.09)] p-6 space-y-3 relative overflow-hidden">
             <div class="w-24 h-24 bg-violet-500 rounded-full absolute -right-5 -top-7">
                 <p class="absolute bottom-6 left-7 text-white text-2xl">02</p>
             </div>

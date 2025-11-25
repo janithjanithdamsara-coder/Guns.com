@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Login — School System</title>
-    
+
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -21,8 +21,8 @@
             font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
             background: url('classroom-blur.jpg') center/cover no-repeat fixed;
             background-color: #f5f7fa;
-            min-height: 100vh; /* Fallback */
-            min-height: 100dvh; /* Modern mobile fix */
+            min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -66,13 +66,11 @@
             font-size: 0.9rem;
         }
 
-        /* Wrapper to hold input and icon together */
         .input-wrapper {
             position: relative;
             width: 100%;
         }
 
-        /* Icon Styling */
         .input-wrapper i {
             position: absolute;
             left: 15px;
@@ -80,7 +78,7 @@
             transform: translateY(-50%);
             color: #7f8c8d;
             font-size: 1.1rem;
-            pointer-events: none; /* Allows clicking through the icon */
+            pointer-events: none;
             transition: color 0.3s ease;
         }
 
@@ -88,7 +86,7 @@
         .input-group select {
             width: 100%;
             padding: 0.85rem;
-            padding-left: 45px; /* Extra padding for the icon */
+            padding-left: 45px;
             border: 1px solid #dfe6e9;
             border-radius: 8px;
             font-size: 1rem;
@@ -97,7 +95,6 @@
             color: #2d3436;
         }
 
-        /* Focus Effects */
         .input-group input:focus,
         .input-group select:focus {
             outline: none;
@@ -106,9 +103,6 @@
             box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.15);
         }
 
-        /* Change icon color when input is focused */
-        .input-group input:focus + i,
-        .input-group select:focus + i,
         .input-wrapper:focus-within i {
             color: #3498db;
         }
@@ -137,7 +131,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px; /* Space between text and icon */
+            gap: 10px;
         }
 
         .login-box button:hover {
@@ -147,6 +141,23 @@
 
         .login-box button:active {
             transform: scale(0.98);
+        }
+
+        /* =============== REGISTER LINK =============== */
+        .register-link {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
+        }
+
+        .register-link:hover {
+            color: #2980b9;
+            text-decoration: underline;
         }
 
         /* =============== ERROR MESSAGE =============== */
@@ -163,15 +174,30 @@
 
         /* =============== RESPONSIVE DESIGN =============== */
         @media (max-width: 768px) {
-            .login-box { padding: 2rem; }
+            .login-box {
+                padding: 2rem;
+            }
         }
 
         @media (max-width: 480px) {
-            body { align-items: flex-start; padding: 20px 15px; }
-            .login-container { margin-top: 20px; margin-bottom: 20px; }
-            .login-box { padding: 1.5rem; }
-            .login-box h2 { font-size: 1.5rem; }
-            
+            body {
+                align-items: flex-start;
+                padding: 20px 15px;
+            }
+
+            .login-container {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            .login-box {
+                padding: 1.5rem;
+            }
+
+            .login-box h2 {
+                font-size: 1.5rem;
+            }
+
             .g-recaptcha {
                 transform: scale(0.85);
                 transform-origin: center;
@@ -180,26 +206,34 @@
         }
 
         @media (max-width: 350px) {
-            .login-box { padding: 1.2rem; }
+            .login-box {
+                padding: 1.2rem;
+            }
+
             .g-recaptcha {
                 transform: scale(0.75);
                 margin: 0.5rem -15px 1rem;
             }
-            .login-box h2 { font-size: 1.3rem; }
+
+            .login-box h2 {
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <div class="login-box">
             <h2>School Management System</h2>
             <form method="POST" action="login_process.php">
-                
+
                 <div class="input-group">
                     <label for="username">Username / User ID</label>
                     <div class="input-wrapper">
                         <i class="fas fa-user"></i>
-                        <input type="text" id="username" name="username" required autocomplete="username" placeholder="Enter your ID" />
+                        <input type="text" id="username" name="username" required autocomplete="username"
+                            placeholder="Enter your ID" />
                     </div>
                 </div>
 
@@ -207,19 +241,8 @@
                     <label for="password">Password</label>
                     <div class="input-wrapper">
                         <i class="fas fa-lock"></i>
-                        <input type="password" id="password" name="password" required autocomplete="current-password" placeholder="Enter password" />
-                    </div>
-                </div>
-
-                <div class="input-group">
-                    <label for="role">Role</label>
-                    <div class="input-wrapper">
-                        <i class="fas fa-user-tag"></i>
-                        <select id="role" name="role" required>
-                            <option value="">Select Role</option>
-                            <option value="admin">Admin</option>
-                            <option value="student">Student</option>
-                        </select>
+                        <input type="password" id="password" name="password" required autocomplete="current-password"
+                            placeholder="Enter password" />
                     </div>
                 </div>
 
@@ -231,9 +254,13 @@
                     Login <i class="fas fa-right-to-bracket"></i>
                 </button>
 
+                <a href="../log/registration.php" class="register-link">
+                    <i class="fas fa-user-plus"></i> Register Now
+                </a>
+
                 <?php if (!empty($_GET['error'])): ?>
                     <div class="error">
-                        <i class="fas fa-exclamation-circle"></i> 
+                        <i class="fas fa-exclamation-circle"></i>
                         <?php echo htmlspecialchars($_GET['error']); ?>
                     </div>
                 <?php endif; ?>
@@ -241,4 +268,5 @@
         </div>
     </div>
 </body>
+
 </html>
